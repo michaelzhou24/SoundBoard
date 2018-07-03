@@ -15,6 +15,7 @@
 		12FD3A0220EC2CB200FB0B55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12FD3A0020EC2CB200FB0B55 /* LaunchScreen.storyboard */; };
 		12FD3A0D20EC2CB200FB0B55 /* SoundBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD3A0C20EC2CB200FB0B55 /* SoundBoardTests.swift */; };
 		12FD3A1820EC2CB200FB0B55 /* SoundBoardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD3A1720EC2CB200FB0B55 /* SoundBoardUITests.swift */; };
+		12FD3A2620EC2F2D00FB0B55 /* SoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD3A2520EC2F2D00FB0B55 /* SoundViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		12FD3A1320EC2CB200FB0B55 /* SoundBoardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoundBoardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12FD3A1720EC2CB200FB0B55 /* SoundBoardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundBoardUITests.swift; sourceTree = "<group>"; };
 		12FD3A1920EC2CB200FB0B55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12FD3A2520EC2F2D00FB0B55 /* SoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				12FD39F420EC2CB000FB0B55 /* AppDelegate.swift */,
 				12FD39F620EC2CB000FB0B55 /* ViewController.swift */,
 				12FD39F820EC2CB000FB0B55 /* Main.storyboard */,
+				12FD3A2520EC2F2D00FB0B55 /* SoundViewController.swift */,
 				12FD39FE20EC2CB200FB0B55 /* Assets.xcassets */,
 				12FD3A0020EC2CB200FB0B55 /* LaunchScreen.storyboard */,
 				12FD3A0320EC2CB200FB0B55 /* Info.plist */,
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12FD3A2620EC2F2D00FB0B55 /* SoundViewController.swift in Sources */,
 				12FD39FD20EC2CB000FB0B55 /* SoundBoard.xcdatamodeld in Sources */,
 				12FD39F720EC2CB000FB0B55 /* ViewController.swift in Sources */,
 				12FD39F520EC2CB000FB0B55 /* AppDelegate.swift in Sources */,
