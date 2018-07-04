@@ -59,13 +59,6 @@
                                     <action selector="recordTapped:" destination="A1G-kV-zZ2" eventType="touchUpInside" id="KUi-3u-mVc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kV-DW-EMx">
-                                <rect key="frame" x="171" y="148" width="30" height="30"/>
-                                <state key="normal" title="Play"/>
-                                <connections>
-                                    <action selector="playTapped:" destination="A1G-kV-zZ2" eventType="touchUpInside" id="sdP-cF-H9b"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sound Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1x9-QW-heb">
                                 <rect key="frame" x="127.5" y="184" width="120" height="30"/>
                                 <constraints>
@@ -80,6 +73,13 @@
                                 <state key="normal" title="Add"/>
                                 <connections>
                                     <action selector="addTapped:" destination="A1G-kV-zZ2" eventType="touchUpInside" id="2Jb-iX-7Sh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kV-DW-EMx">
+                                <rect key="frame" x="172" y="132" width="30" height="30"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="playTapped:" destination="A1G-kV-zZ2" eventType="touchUpInside" id="sdP-cF-H9b"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -98,6 +98,7 @@
                     </view>
                     <connections>
                         <outlet property="nameTextField" destination="1x9-QW-heb" id="FcR-mZ-lAU"/>
+                        <outlet property="playButton" destination="3kV-DW-EMx" id="wJy-1U-Uwc"/>
                         <outlet property="recordButton" destination="aP9-U3-NFX" id="yOW-zK-yny"/>
                     </connections>
                 </viewController>

@@ -7,15 +7,50 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SoundViewController: UIViewController {
 
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var playButton: UIButton!
+    
+    var audioPlayer : AVAudioPlayer?
+    var audioRecorder : AVAudioRecorder?
+    var audioURL : URL?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupRecorder()
+        playButton.isEnabled = false
         // Do any additional setup after loading the view.
+    }
+    
+    // Creates a new AudioRecorder, settings and URL
+    func setupRecorder() {
+        do {
+            let session = AVAudioSession.sharedInstance()
+            try session.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try session.overrideOutputAudioPort(.speaker) // Allows audio to be played through main speaker
+            try session.setActive(true)
+            
+            // Create URL
+            let basePath : String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+            let pathComponents = [basePath, "audio.m4a"]
+            audioURL = NSURL.fileURL(withPathComponents: pathComponents)!
+            print(audioURL!)
+            
+            // Create settings
+            var settings : [String:Any] = [:]
+            settings[AVFormatIDKey] = kAudioFormatMPEG4AAC
+            settings[AVSampleRateKey] = 44100
+            settings[AVNumberOfChannelsKey] = 2
+            
+            audioRecorder = try AVAudioRecorder(url: audioURL!, settings: settings)
+            audioRecorder!.prepareToRecord()
+        } catch let error as NSError {
+            print("Error thrown at AVAudioRecorder!")
+            print(error)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,14 +60,35 @@ class SoundViewController: UIViewController {
     
     @IBAction func recordTapped(_ sender: Any) {
         print("Tapped record!")
+        if audioRecorder!.isRecording {
+            audioRecorder?.stop()
+            recordButton.setTitle("Record", for: .normal)
+            playButton.isEnabled = true
+        } else {
+            playButton.isEnabled = false
+            audioRecorder?.record()
+            recordButton.setTitle("Stop", for: .normal)
+        }
     }
     
     @IBAction func playTapped(_ sender: Any) {
         print("Tapped play!")
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: audioURL!)
+            audioPlayer?.play()
+        } catch {
+            print("Cannot find audio file!")
+        }
     }
 
     @IBAction func addTapped(_ sender: Any) {
         print("Tapped add!")
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        let sound = Sound(context: context)
+        sound.name = nameTextField.text
+        sound.audio = NSData(contentsOf: audioURL!)! as Data
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
     
     /*
