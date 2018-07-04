@@ -14,6 +14,7 @@ class SoundViewController: UIViewController {
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
     
     var audioPlayer : AVAudioPlayer?
     var audioRecorder : AVAudioRecorder?
@@ -22,6 +23,7 @@ class SoundViewController: UIViewController {
         super.viewDidLoad()
         setupRecorder()
         playButton.isEnabled = false
+        addButton.isEnabled = false
         // Do any additional setup after loading the view.
     }
     
@@ -64,8 +66,10 @@ class SoundViewController: UIViewController {
             audioRecorder?.stop()
             recordButton.setTitle("Record", for: .normal)
             playButton.isEnabled = true
+            addButton.isEnabled = true
         } else {
             playButton.isEnabled = false
+            addButton.isEnabled = false
             audioRecorder?.record()
             recordButton.setTitle("Stop", for: .normal)
         }
@@ -89,6 +93,7 @@ class SoundViewController: UIViewController {
         sound.name = nameTextField.text
         sound.audio = NSData(contentsOf: audioURL!)! as Data
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        navigationController!.popViewController(animated: true)
     }
     
     /*
